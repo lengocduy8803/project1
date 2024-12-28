@@ -1,0 +1,13 @@
+<h1>New product</h1>
+
+<%= form_with model: @product do |form| %>
+
+  <div>
+  <%= form.label :featured_image, style: "display: block" %>
+  <%= form.file_field :featured_image, accept: "image/*" %>
+</div>
+
+  
+<%= render "form", product: @product %>
+<%= link_to "Cancel", products_path %>
+<% end %>

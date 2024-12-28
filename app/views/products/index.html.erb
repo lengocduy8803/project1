@@ -1,0 +1,13 @@
+<%= link_to "Login", new_session_path, class: "login-link" unless authenticated? %>
+
+<h1 class="page-title">Products</h1>
+
+<%= link_to "New Product", new_product_path, class: "btn btn-primary" if authenticated? %>
+
+<div id="products" class="product-list">
+  <% @products.each do |product| %>
+    <div class="product-item">
+      <%= link_to product.name, product, class: "product-link" %>
+    </div>
+  <% end %>
+</div>
