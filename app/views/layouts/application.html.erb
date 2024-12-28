@@ -22,16 +22,21 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
   <div class="notice"><%= notice %></div>
-  <nav>
-  <%= link_to "Home", root_path %>
-  
-  <%= button_to "Log out", session_path, method: :delete if authenticated? %>
 
-</nav>
+  <nav class="navbar">
+    <%= link_to "Home", root_path, class: "navbar-brand" %>
+    <div class="navbar-links">
+      <%= link_to "Login", new_session_path, class: "login-link" unless authenticated? %>
+      <%= button_to "Log out", session_path, method: :delete, class: "logout-button" if authenticated? %>
+    </div>
+  </nav>
+</body>
+
 <main>
   <%= yield %>
 </main>

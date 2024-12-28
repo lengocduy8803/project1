@@ -1,13 +1,19 @@
-<%= link_to "Login", new_session_path, class: "login-link" unless authenticated? %>
 
-<h1 class="page-title">Products</h1>
+
+
+<h1 class="page-title"><%= t "Products" %></h1>
 
 <%= link_to "New Product", new_product_path, class: "btn btn-primary" if authenticated? %>
 
 <div id="products" class="product-list">
   <% @products.each do |product| %>
     <div class="product-item">
-      <%= link_to product.name, product, class: "product-link" %>
+      <%= link_to product_path(product), class: "product-link" do %>
+        <%= image_tag product.featured_image, alt: product.name, class: "product-image" if product.featured_image.attached? %>
+        <%= product.name %>
+      <% end %>
     </div>
   <% end %>
+</div>
+
 </div>

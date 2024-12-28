@@ -4,10 +4,11 @@
   <%= image_tag @product.featured_image if @product.featured_image.attached? %>
 
   <section class="product-info">
-    <% cache @product do %>
-      <h1><%= @product.name %></h1>
-      <%= @product.description %>
-    <% end %>
+  <% cache @product do %>
+    <h1><%= @product.name %></h1>
+    <%= @product.description %>
+  <% end %>
+  
 
     <%= render "inventory", product: @product %>
 
